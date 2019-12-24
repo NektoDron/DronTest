@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "TSLab.ML.NET": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Projects\\TSLab-dev21\\Debug\\TSLabApp.exe",
+      "workingDirectory": "C:\\Projects\\TSLab-dev21\\Debug\\"
+    }
+  }
+}

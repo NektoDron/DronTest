@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>TSLabML.Net</AssemblyName>
+    <RootNamespace>TSLab.ML.Net</RootNamespace>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SsaPreview.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="SsaPreview.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Common.Logging" Version="3.4.1" />
+    <PackageReference Include="LightGBM" Version="2.2.3" />
+    <PackageReference Include="Microsoft.ML.AutoML" Version="0.16.0" />
+    <PackageReference Include="Microsoft.ML.FastTree" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ML.LightGbm" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ML.Mkl.Components" Version="1.4.0" />
+    <PackageReference Include="Microsoft.ML.TimeSeries" Version="1.4.0" />
+    <PackageReference Include="TSLab.Script.Handlers" Version="2.1.99.1012" />
+    <PackageReference Include="TSLab.ScriptEngine" Version="2.1.99.1012" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dron.Indicators\Dron.Indicators.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(OutDir)\Microsoft.ML.*.dll &quot;%25userprofile%25\AppData\Local\TSLab\TSLab 2.0\Handlers&quot;&#xD;&#xA;copy $(OutDir)\runtimes\win-x64\native\*.dll &quot;%25userprofile%25\AppData\Local\TSLab\TSLab 2.0\Handlers&quot;&#xD;&#xA;copy $(OutDir)\TSLabMl* &quot;%25userprofile%25\AppData\Local\TSLab\TSLab 2.0\Handlers&quot;" />
+  </Target>
+
+</Project>
